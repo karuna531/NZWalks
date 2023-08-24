@@ -1,4 +1,6 @@
-﻿namespace NXWalks.Api.Models.Domain
+﻿using NXWalks.Api.Models.Domain;
+
+namespace NXWalks.Api.Models.DTO
 {
     public class Region
     {
@@ -11,7 +13,6 @@
         public long Population { get; set; }
         //Navigation Property
         public IEnumerable<Walk> Walks { get; set; }
-
 
     }
 }
