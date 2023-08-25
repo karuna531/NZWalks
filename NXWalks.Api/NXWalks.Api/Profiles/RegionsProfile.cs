@@ -9,6 +9,7 @@ namespace NXWalks.Api.Profiles
             CreateMap<Models.Domain.Region, Models.DTO.Region>()
                 .ReverseMap();
 
+
         }
     }
 }

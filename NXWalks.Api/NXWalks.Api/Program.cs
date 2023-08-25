@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using NXWalks.Api.Data;
 using NXWalks.Api.Repositories;
+using NXWalks.Api.Repositories.WalksRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,15 @@ builder.Services.AddDbContext<NzWalksDbContext>(options =>
 });
 builder.Services.AddScoped<IRegionRepository,RegionRepository>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddScoped<IWalksRepository, WalksRepository>(); 
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
+
+
 
 var app = builder.Build();
 
